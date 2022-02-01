@@ -1,0 +1,15 @@
+# - LoadModule rewrite_module modules/mod_rewrite.so
+# - AllowOverride All
+
+# This enables multiple indexes
+Options -MultiViews
+RewriteEngine On
+
+# Here you put the absolute url to your Public Files
+RewriteBase /MVCTutorial/public
+
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
